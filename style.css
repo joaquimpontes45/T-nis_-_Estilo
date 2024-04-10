@@ -87,6 +87,30 @@ body{
   transition: transform 1s ease-in-out;}
 /* Fim do anuncio*/
 /*Inico da largura da tela */
-@media(max-width: 858px){
+@media(max-width: 600px){
+  .nav-list{
+    max-width: 0px;
+    height: 80px;
+    /*margin-inline: auto;
+*/
 
+    display:flex;
+    justify-content:end;
+    align-items: end;
+    margin-bottom: 12px;
+  }
+  .logo{
+    display:flex;
+    margin-top:-24px;
+  }
+  .nav{
+    display:flex;
+    justify-content: start;
+  }
+  .nav-list{
+    display: flex;
+    justify-content: end;
+    
+  }
+  
 }/*Fim da largura da tela*/
