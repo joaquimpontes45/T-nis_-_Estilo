@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Lateral</title>
+  <link rel="stylesheet" href="../../static/admin/css/style.css">
+  <!--Inicio do google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet"><!--final do google fonts-->
+
+</head>
+
+<body>
+  
+  <div class="topbar">
+    <div class="logo" style="margin-left: 12px;">
+      <a href="{{url_for('admin')}}" style="text-decoration: none;color: white;"><h1>Tenis & estilo</h1></a>
+    </div>
+    <div class="user">
+      {% if nome %}
+        <span>Usuário Logado</span>
+      {% else %}
+        <span>{{session['nome']}}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+
+      <li><a href="#">Cadastro de produtos</a>
+        <ul>
+          <li><a href="{{url_for('cadastrar_produto')}}">Cadastrar</a></li>
+          <li><a href="{{url_for('listarProduto')}}">Listar</a></li>
+          <li><a href="{{url_for('ExcluirIDproduto')}}">Excluir</a></li>
+          <li><a href="{{url_for('admin_login')}}">Login</a></li>
+        </ul>
+      </li>
+      
+      <hr>
+      <li><a href="#">Cadastro de categorias</a>
+        <ul>
+          <li><a href="{{url_for('cadastrar_categoria')}}">Cadastrar</a></li>
+          <li><a href="{{url_for('listarCategoria')}}">Listar</a></li>
+          <li><a href="{{url_for('ExcluirIDcategoria')}}">Excluir</a></li>
+        </ul>
+      </li>
+    
+      <hr>
+
+      <li><a href="#">Cadastrar slides</a>
+        <ul>
+          <li><a href="{{url_for('cadastro_slides')}}">Cadastrar</a></li>
+          <li><a href="{{url_for('listarSlide')}}">Listar</a></li>
+          <li><a href="{{url_for('ExcluirIDslide')}}">Excluir</a></li>
+        </ul>
+      </li>
+
+      <hr>
+
+      <li><a href="#">Cadastro de tamanhos</a>
+        <ul>
+          <li><a href="{{url_for('cadastrar_tamanho')}}">Cadastrar</a></li>
+          <li><a href="{{url_for('listarTamanho')}}">Listar</a></li>
+          <li><a href="{{url_for('ExcluirIDtamanho')}}">Excluir</a></li>
+        </ul>
+      </li>
+      <hr>
+
+    </ul>
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+  <footer class="footer">
+    <p></p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+ <style>
+    form{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .coluna{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+ </style>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+      <h1 class="flash-message" style="display: flex;justify-content: center;">{{ message }}
+        <button class="close" onclick="this.parentElement.style.display='none';">&times;</button></h1>
+    {% endfor %}
+{% endif%}
+{% endwith %}
+
+
+
+
+{% if categoria %}
+<form action="" method="POST">
+    <div class="coluna">
+        <br><br><br><br><br><br><br><br><br>
+        <label for="id">informe o id da categoria:</label>
+        <input type="text" id="id" name="id" required style="width: 100px;">
+        <br>
+
+        <button type="submit" style="width: 100px;margin-right: 45px;" >Excluir</button>
+        <br>
+        <a href="{{url_for('admin')}}">cancelar</a>
+    </div>
+</form>
+{% endif %}
+{% if not categoria %}
+    <h1 style="display: flex;justify-content: center;">Lamento, mas não há categorias cadastradas.</h1>
+{% endif %}
+{% endblock %}

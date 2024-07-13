@@ -1,0 +1,16 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Excluir slide</h1>
+
+    <p>Tem certeza de que deseja excluir o slide com id  "<td>{{ slides['id']}}</td>"?</p> 
+    <form method="POST" >
+        <button type="submit">Excluir</button>
+    </form>
+
+    <!-- Botão de retorno para outra página -->
+    <a href="{{ url_for('listarSlide') }}">Cancelar</a>
+</div>
+
+{% endblock %}

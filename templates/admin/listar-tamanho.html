@@ -1,0 +1,31 @@
+{% extends 'admin/base.html'%}
+
+{% block content %}
+  <div class="content">
+    <div class="container">
+        <h1>Lista de tamanhos</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>tamanho</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            {% for tamanhos in tamanhos %}
+            <tr>
+                <td>{{tamanhos['id']}}</td>
+                <td>{{tamanhos['tamanho']}}</td>
+                <td><a href="{{url_for('editarTamanho', id=tamanhos['id'])}}">Editar</a></td>
+                <td><a href="{{url_for('excluirTamanho', id=tamanhos['id'])}}">Excluir</a></td>
+            </tr>
+            {% endfor %}
+                
+                
+
+        </table>
+
+
+    </div>
+  </div>
+{% endblock %}

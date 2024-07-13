@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/site/css/style.css">
+    <link rel="stylesheet" href="../../static/site/css/visualizar_tenis.css">
+    <!--Inicio do google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet"><!--final do google fonts-->
+    <script defer src="../../static/site/card_logout.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--anuncio do frete-->
+    <marquee class="anuncioInicial" behavior="alternate">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee><!--fim do anuncio-->
+    <!--adaptação-->
+    <marquee class="anuncioAndroid">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee>
+    <header class="header">
+        <a class="logo" href="{{url_for('index')}}" alt="">Tênis & Estilo</a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="sobre"><a href="#sobre">Sobre</a></li>
+                <select name="categorias" id="categorias" onchange="location = this.value;">
+                    <option value="">Selecione uma categoria</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ url_for('site_listar_produto', id=categoria['id']) }}">{{ categoria['nome'] }}</option>
+                    {% endfor %}
+                </select>
+                {% if nome %}
+                    <li class="contato"><a href="javascript:void(0);" onclick="confirmLogout()">{{nome}}</a></li>
+                {% else %}
+                    <li class="contato"><a href="{{url_for('login')}}" >login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+    <section class="conteudo">
+        <div class="conteudo-img">
+            <img src="data:image/jpeg;base64,{{produto['img']}}" class="one">
+        </div><!--conteudo-img-->
+
+        <div class="conteudo-texto">
+
+            <h1>{{ produto['nome'] }}</h1>
+            <h3>{{ produto['nome_categoria'] }}</h3>
+            
+            <p>Tamanhos:</p>
+            <ul>
+                {% for tamanho in tamanhos %}
+                    <li class="tamanho">{{ tamanho }}</li>
+                {% endfor %}
+            </ul>
+            
+            <h3>R$ {{ produto['preco'] }}</h3>
+            <a href="#" class="btn">COMPRAR AGORA</a>
+            
+        </div><!--conteudo-texto-->
+    </section><!--conteudo-->
+
+
+    <div class="troca">
+        <div class="linha">
+            <li><img class="tal" src="data:image/jpeg;base64,{{produto['img']}}" onclick="slider('data:image/jpeg;base64,{{produto['img']}}')"></li>
+        </div><!--linha-->
+
+        <div class="linha2">
+            <li><img src="data:image/jpeg;base64,{{produto['imag']}}" onclick="slider('data:image/jpeg;base64,{{produto['imag']}}')"></li>
+        </div><!--linha2-->
+
+        <div class="linha3">
+            <li><img src="data:image/jpeg;base64,{{produto['image']}}" onclick="slider('data:image/jpeg;base64,{{produto['image']}}')"></li>
+        </div><!--linha3-->
+    </div><!--main-->
+    <script>
+        function slider (anything){
+            document.querySelector ('.one') .src = anything;
+        }
+    </script>
+</body>
+</html>

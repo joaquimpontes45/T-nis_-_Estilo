@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<style>
+    .editar{
+        display: flex;
+        margin-left: 50vh;
+        width: 50%;
+    }
+    .ibagens{
+        display: flex;
+    }
+    .ibagens_edit{
+        display: flex;
+    }
+</style>
+    <h1>Editar Categoria</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="editar">
+            <label for="nome_produto" style="display: block;">Nome do Produto:</label>
+            <input type="text" id="nome_produto" name="tamanho" value="{{tamanhos['tamanho']}}" maxlength="2" required>
+
+        <button type="submit">Cadastrar</button>
+        <a href="{{ url_for('listarTamanho') }}">Cancelar</a>
+    </form>
+{% endblock %}

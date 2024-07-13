@@ -1,0 +1,28 @@
+
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="content">
+    <div class="container">
+    <h2>Listagem de Categorias</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{categoria['id']}}</td>
+                <td>{{categoria['nome']}}</td>
+                <td>{{categoria['descricao']}}</td>
+                <td><a href="{{url_for('editarCategoria', id=categoria['id'])}}" style="text-decoration:none ;"> Editar </a></td>
+                <td><a href="{{url_for('excluirCategoria', id=categoria['id'])}}" style="text-decoration:none ;"> Excluir </a></td>
+            </tr>
+            {% endfor %}
+        
+        </table>
+    </div>    
+</div>
+{% endblock %}

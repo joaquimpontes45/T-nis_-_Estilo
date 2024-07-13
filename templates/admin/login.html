@@ -1,0 +1,37 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    button{
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+  
+
+<br><br><br><br>
+  <div class="container" style="background-color:#242f3d;border-radius: 12px;">
+    <form method="POST" >
+      <h2>Login</h2>
+      <div><input type="text" placeholder="Usuário" name="email_adm" required></div>
+        <br>
+      <div><input type="password" placeholder="Senha" name="senha_adm" required></div>
+      <br>
+      <button type="submit">Entrar</button>
+
+    </form>
+  </div>
+
+
+
+
+
+
+{% endblock %}

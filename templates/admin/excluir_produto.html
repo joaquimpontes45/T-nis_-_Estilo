@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir produto</title>
+</head>
+<body>
+    {% extends 'admin/base.html' %}
+
+    {% block content %}
+    <div class="dashboard">
+        <h1>Excluir produtos</h1>
+    
+        <p>Tem certeza de que deseja excluir o produto "{{ produtos['nome']}}"?</p> 
+        <td><img src="data:image/jpeg;base64,{{produtos['img']}}" alt="imagem Atual" style="width: 200px;"></td>
+        <td><img src="data:image/jpeg;base64,{{produtos['imag']}}" alt="imagem Atual" style="width: 200px;"></td>
+        <td><img src="data:image/jpeg;base64,{{produtos['image']}}" alt="imagem Atual" style="width: 200px;"></td>
+        <form method="POST">
+            <button type="submit">Excluir</button>
+        </form>
+
+        <!-- Botão de retorno para outra página -->
+        <a href="{{ url_for('listarProduto') }}">Cancelar</a>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

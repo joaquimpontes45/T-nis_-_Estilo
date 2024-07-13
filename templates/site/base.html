@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/site/css/style.css">
+    <link rel="stylesheet" href="../../static/site/css/cards.css">
+    <link rel="stylesheet" href="../../static/site/css/contato.css">
+    <link rel="stylesheet" href="../../static/site/css/sobre.css">
+    <script defer src="../../static/site/SLIDES.js"></script>
+    <script defer src="../../static/site/card_logout.js"></script>
+    <title>Tênis & Estilo</title>
+    <!--Inicio do google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet"><!--final do google fonts-->
+</head>
+<body>
+    
+    <!--anuncio do frete-->
+    <marquee class="anuncioInicial" behavior="alternate">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee><!--fim do anuncio-->
+    <!--adaptação-->
+    <marquee class="anuncioAndroid">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee>
+    <header class="header">
+        <a class="logo" href="{{url_for('index')}}" alt="">Tênis & Estilo</a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="sobre"><a href="#sobre">Sobre</a></li>
+                <select name="categorias" id="categorias" onchange="location = this.value;" style="border-radius: 12px;">
+                    <option value="">Categorias</option>
+                    {% for categoria in categorias %}
+                    <option value="{{ url_for('site_listar_produto', id=categoria['id']) }}">{{ categoria['nome'] }}</option>
+                    {% endfor %}
+                </select>
+
+            
+            </select>
+                {% if nome %}
+                    <li class="contato"><a href="javascript:void(0);" onclick="confirmLogout()">{{nome}}</a></li>
+                {% else %}
+                    <li class="contato"><a href="{{url_for('login')}}" >login</a></li>
+                {% endif %}
+            </ul>
+            {% for categoria in categorias %}
+            <a href="{{url_for('site_listar_produto', id=categoria['id'])}}" class="categoria" style="color: blue;"><br>{{categoria['nome']}}</a>
+            {% endfor %}
+        </nav>
+ 
+    </header>
+    <!--anuncio slides-->
+    <div class="banner">
+        <div class="slides">
+        {% for slide in slides %}
+            {% if slide['status'] == 'on' %}
+                <img  src="data:image/jpeg;base64,{{slide['slide']}}" alt="">
+            {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+      <br>
+    <!--fim do anuncio-->
+
+<!--cards-->
+    {% block content %}
+    
+    {% endblock %}
+  <!--fim dos cards-->
+
+    <!--inicio da descrição do site-->
+    <div style="clear: both;" class="sobre1" id="sobre">
+
+        <div class="descrição">
+
+            <ul>
+                <li>
+                    <h1>Sobre a Tenis e estilo</h1>
+                    <a href="historia.html">História</a>
+                    <a href="#">Carreira</a>
+                </li>
+                <li>
+                    <h1>Ajuda</h1>
+                    <a href="#">Meus Pedidos</a>
+                    <a href="#">Fale Conosco</a>
+                    <a href="#">Dúvidas Frequentes</a>
+                </li>
+                <li>
+                    <h1>Políticas</h1>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Regulamento</a>
+                    <a href="#">Trocas e Devoluções</a>
+                </li>
+                <li>
+                        <h1>formas de pagamentos</h1>
+                    <div class="pagamentos"><img src="../../static/site/img/visa.svg" alt="">
+                        <img src="../../static/site/img/elo.svg" alt="">
+                        <img src="../../static/site/img/master.svg" alt="">
+                        <img src="../../static/site/img/pix.svg" alt="">
+                    </div>
+                </li>
+            </ul>
+            <br>
+
+        </div>
+        <br>
+        <hr><hr>
+        <br>
+        <div class="logoEoutros">
+
+            <h1 class="Tenis">Tênis & Estilo</h1>
+            <p>© 1930 Tenis & estilo país_tal cidade_tal - todos os direitos legais.<br>
+                Tenis & estilo Brasil - CNPJ: 99.999.999/9999-99 - Av.alguma coisa, endereço aqui - Rua.alguma aqui- cidade - estado</p>
+            <div class="alinhaRede">
+                <div class="insta"><img src="../../static/site/img/Instagram-256.png" alt="Instagram"></div>
+                <div class="Facebook"><img src="../../static/site/img/Facebook-256.png" alt="Facebook"></div>
+                <div class="Whatsapp"><img src="../../static/site/img/WhatsApp-256.png" alt="Whatsapp"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
