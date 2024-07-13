@@ -1,0 +1,24 @@
+{% extends 'site/base.html'%}
+
+{% block content %}
+           
+        {% for produto in produtos %}
+        <section>
+             <div class="coluna" style="margin-right: 20px;">
+                <div class="card">
+                    <img class="ima"  src="data:image/jpeg;base64,{{produto['img']}}" alt="Imagem do tenis">
+                    <img class="depoisDomouse" src="data:image/jpeg;base64,{{produto['imag']}}" alt="Imagem do tenis1">
+                    <p>{{produto['nome_categoria']}}</p>
+                    <h3>{{produto['nome']}}</h3>
+                    <h5>{{produto['descricao']}}</h5>
+                    <h2>R$:{{produto['preco']}}</h2>
+                    <a class="ai" href="{{url_for('visualizar', id=produto['id'])}}"><button class="btn">ver mais</button></a>
+                </div>
+        
+            </div>
+        </section>
+        {% endfor %}
+    <br>     
+    
+    
+{% endblock %}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/site/css/categoria.css">
+    <link rel="stylesheet" href="../../static/site/css/style.css">
+    <!-- Inicio do google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet"><!--final do google fonts-->
+    <script defer src="../../static/site/card_logout.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--anuncio do frete-->
+    <marquee class="anuncioInicial" behavior="alternate">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee><!--fim do anuncio-->
+    <!--adaptação-->
+    <marquee class="anuncioAndroid">FRETE GRÁTIS em todo o Brasil aparti de R$ 199,99</marquee>
+    <header class="header">
+        <a class="logo" href="{{url_for('index')}}" alt="">Tênis & Estilo</a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="sobre"><a href="#sobre">Sobre</a></li>
+
+                <select name="categorias" id="categorias" onchange="location = this.value;" style="border-radius: 12px;">
+                    <option >Categorias</option>
+                    {% for categorias in categorias %}
+                    <option value="{{ url_for('site_listar_produto', id=categorias['id']) }}">{{ categorias['nome'] }}</option>
+                    {% endfor %}
+                </select>
+                {% if nome %}
+                    <li class="contato"><a href="javascript:void(0);" onclick="confirmLogout()">{{nome}}</a></li>
+                {% else %}
+                    <li class="contato"><a href="{{url_for('login')}}" >login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
+    <br>
+    {% for produto in produtos %}
+    <section>
+        <div class="coluna"  style="display: block;">
+            <div class="card">
+                <img class="ima"  src="data:image/jpeg;base64,{{produto['img']}}" alt="tenis da fila">
+                <img class="depoisDomouse" src="data:image/jpeg;base64,{{produto['imag']}}" alt="">
+                <p>{{produto['nome_categoria']}}</p>
+                <h3>{{produto['nome']}}</h3>
+                <h5>{{produto['descricao']}}</h5>
+                <h2>R$ {{produto['preco']}}</h2>
+                <a class="botão" href="{{url_for('visualizar', id=produto['id'])}}"><button class="btn">ver mais</button></a>
+            </div>
+    {% endfor %} 
+    </section>
+    <style>
+        .coluna{
+    /*display: flex;*/
+    gap: 8px;
+    
+    }
+    .ima{
+        display: flex;
+        margin-left: 50px;
+        max-width: 50%;
+        max-height: 50%;
+    }
+
+    .depoisDomouse{display: none;}
+
+    .card{
+        margin-right: 10px;
+        margin-bottom: 200px;
+        height: 14rem;
+        width: 12rem;
+        float: left;
+        display: inline-block;
+        max-width: 100%;
+        max-height: 20%;
+        background-color: #808080;
+        border-radius: 24px;
+        color: white;
+    }
+
+    h3{
+        display: flex;
+        justify-content: center;
+    }
+    .btn{
+        /*width: 100%;
+        height: 10%;*/
+        border-radius: 0px 0px 12px 12px;
+        border: none;
+        background-color: #808080;
+    }
+    .btn a{
+        color: black;
+    }
+    .card:hover {
+        /*transform: translateY(-12px);
+        transition: transform 1s ease-in-out;
+        box-shadow: 12px 24px 0 black;*/
+        .ima{display: none;}
+        .depoisDomouse{
+            transition: 1s ease-in-out;
+            display: flex;
+            margin-left: 30px;
+            max-width: 50%;
+            max-height: 50%;
+        }
+    }
+    .card:not(:hover) {
+        transform: translateY(0);
+        transition: transform 1s ease-in-out; /* Tempo e função para retorno*/
+    }
+
+    .btn:hover{
+        background-color: black;
+        transition: 1s ease-in-out;
+        color: white;
+
+    }
+
+    .btn:not(:hover){
+        background-color: #808080;
+        transition: 1s ease-in-out;
+    }
+
+    .coluna .btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .card {
+        position: relative;
+        overflow: hidden; /* Para garantir que o botão não ultrapasse os limites do cartão */
+    }
+
+    .btn {
+        position: absolute;
+        bottom: 10px; /* Posiciona o botão dentro do cartão */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        margin-bottom: -10px;
+    }
+
+    .card:hover .btn {
+        bottom: 10px; /* Mantém o botão na mesma posição quando o cartão é hover */
+    }
+
+
+
+
+
+
+
+
+
+    @media(max-width:600px){
+        .coluna{
+            display: flex;
+            gap: 12px;
+        }
+        .ima{
+            display: flex;
+            margin-left: 35px;
+            max-width: 50%;
+            max-height: 50%;
+        }
+        .depoisDomouse{
+            display: none;
+        }
+
+        .card{
+            max-width: 50%;
+            max-height: 50%;
+            background-color: #808080;
+            border-radius: 24px;
+        }
+        h3{
+            display: flex;
+            justify-content: center;
+        }
+        .btn{
+            width: 100%;
+            border-radius: 0px 0px 12px 12px;
+            background-color: #808080;
+        }
+        card:hover{
+            transform: translateY(-12px);
+            transition: transform 1s ease-in-out;
+            box-shadow: 12px 24px 0 black;
+        }
+        .btn:hover{
+            background-color: black;
+            color: white;
+        }
+    }
+
+
+    </style>
+
+</body>
+</html>

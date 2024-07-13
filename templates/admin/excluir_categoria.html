@@ -1,0 +1,19 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="centro">
+        <h1>Excluir produtos</h1>
+
+        <p>Tem certeza de que deseja excluir a categoria "{{categorias['nome']}}"?</p> 
+        
+        <form method="POST">
+            <button type="submit">Excluir</button>
+        </form>
+
+        <!-- Botão de retorno para outra página -->
+        <a href="{{ url_for('listarCategoria') }}">Cancelar</a>
+    </div>
+</div>
+
+{% endblock %}

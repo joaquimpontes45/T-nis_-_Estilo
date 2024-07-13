@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <link rel="stylesheet" href="../../static/site/css/login.css">
+</head>
+<body>
+
+
+
+  <div class="container">
+    <form method="POST" class="login-form">
+      <h2>Login</h2>
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+                {% for message in messages %}
+                    <h1 class="flash-message" style="display: flex;justify-content: center;color: rgb(14, 240, 63);">{{ message }}</h1>
+                {% endfor %}
+          {% endif%}
+      {% endwith %}
+
+      <input type="text" placeholder="Usuário" name="email" required>
+      <input type="password" placeholder="Senha" name="senha" required>
+      <button type="submit">Entrar</button>
+      <div class="options">
+        <a href="{{url_for('cadastrar_usuario')}}">Cadastrar Conta</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+

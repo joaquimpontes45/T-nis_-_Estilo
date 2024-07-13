@@ -1,0 +1,35 @@
+{% extends 'admin/base.html'%}
+
+{% block content %}
+
+  <!--mensagem de cadastro-->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+      <h1 class="flash-message" style="display: flex;justify-content: center;">{{ message }}
+        <button class="close" onclick="this.parentElement.style.display='none';">&times;</button></h1>
+    {% endfor %}
+{% endif%}
+{% endwith %}
+
+
+  <div class="content">
+    <div class="card">
+      <h2>Categorias</h2>
+      <img src="../../static/admin/img/produtos.png" alt="Imagem da categoria">
+      <div class="card-content">
+        <h3>Produtos Cadastradas: <span id="produtosCount">{{produtos}}</span></h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Produtos</h2>
+      <img src="../../static/admin/img/categoria.png" alt="Imagem do produto">
+      <div class="card-content">
+        <h3>categorias Cadastrados: <span id="categoriasCount">{{categorias}}</span></h3>
+      </div>
+    </div>
+
+
+  </div>
+{% endblock %}

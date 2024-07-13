@@ -1,0 +1,42 @@
+{% extends 'admin/base.html'%}
+
+{% block content %}
+
+    <style>
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #nome_categoria{
+            width: 300px;
+        }
+        #descricao{
+            width: 300px;
+        }
+
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <h1 class="flash-message" style="display: flex;justify-content: center;">{{ message }}
+                    <button class="close" onclick="this.parentElement.style.display='none';">&times;</button></h1>
+                {% endfor %}
+            {% endif%}
+        {% endwith %}
+    <h1>Cadastrar Categoria</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="nome_categoria">Nome do Categoria</label>
+        <input type="text" id="nome_categoria" name="nome_categoria" required>
+        <br>
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required>
+        <br>
+        <button type="submit">Cadastrar</button>
+    </form>
+{%endblock%}

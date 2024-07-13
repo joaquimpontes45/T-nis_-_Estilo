@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Cadastrar tamanho</title>
+</head>
+<body>
+    {% extends 'admin/base.html'%}
+
+{% block content %}
+
+    <style>
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #tamanho_tenis{
+            width: 300px;
+        }
+
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+          <h1 class="flash-message" style="display: flex;justify-content: center;">{{ message }}
+            <button class="close" onclick="this.parentElement.style.display='none';">&times;</button></h1>
+        {% endfor %}
+    {% endif%}
+    {% endwith %}
+
+
+    <h1>Cadastrar tamanho</h1>
+    <form method="POST">
+        <label for="tamanho_tenis">tamanho do tenis:</label>
+        <input type="text" id="tamanho_tenis" name="tamanho_tenis" maxlength="2" required>
+        <br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+{%endblock%}
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'admin/base.html'%}
+
+{% block content %}
+  <div class="content">
+    <div class="container">
+        <h1>Lista de produtos</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>imagem</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>categoria</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{produto['id']}}</td>
+                <td><img src="data:image/jpeg;base64,{{produto['img']}}" alt="imagem Atual" style="width: 200px;"></td>
+                <td>{{produto['nome']}}</td>
+                <td>{{produto['descricao']}}</td>
+                <td>{{ produto['nome_categoria'] }}</td>
+
+
+                <td><a href="{{url_for('editarProduto', id=produto['id'])}}" style="text-decoration:none ;" > Editar </a></td>
+                <td><a href="{{url_for('excluirProduto', id=produto['id'])}}" style="text-decoration:none ;" > Excluir </a></td>
+                
+            </tr>
+            {% endfor %}
+                
+                
+
+        </table>
+
+
+    </div>
+  </div>
+{% endblock %}

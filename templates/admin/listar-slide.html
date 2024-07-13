@@ -1,0 +1,50 @@
+{% extends 'admin/base.html'%}
+
+{% block content %}
+  <div class="content">
+    <div class="container">
+        <h1>Lista de slides</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>imagem</th>
+                <th>ligar</th>
+                <th>desligar</th>
+                <th>editar</th>
+                <th>excluir</th>
+            </tr>
+            {% for slides in slides %}
+            <tr>
+                <td>{{slides['id']}}</td>
+                <td><img src="data:image/jpeg;base64,{{slides['slide']}}" alt="imagem Atual" style="width: 50px;height: 50px;"></td>
+                    <td style="color: green;">
+                      {% if slides.status == 'off' %}
+                            <a href="{{url_for('ligar_slide', id=slides['id'])}}"><button style="background-color: green;border-radius: 8px;">ligar</button></a>
+                      {% else %}
+                            ligado
+                      {% endif %}
+                    </td>
+                    <td style="color: red;">
+                      {% if slides.status == 'on' %}
+                            <a href="{{url_for('desligar_slide', id=slides['id'])}}"><button style="background-color: red;border-radius: 8px;">desligar</button></a>
+                      {% else %}
+                            desligado
+                      {% endif %}
+                    </td>
+
+
+
+                <td><a href="{{url_for('editarSlide', id=slides['id'])}}">Editar</a></td>
+                <td><a href="{{url_for('excluirSlide', id=slides['id'])}}" style="text-decoration:none ;" > Excluir </a></td>
+            </tr>
+            {% endfor %}
+                
+                
+
+        </table>
+
+
+    </div>
+  </div>
+{% endblock %}

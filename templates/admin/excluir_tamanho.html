@@ -1,0 +1,16 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Excluir tamanho</h1>
+
+    <p>Tem certeza de que deseja excluir o tamanho "<td>{{ tamanhos['tamanho']}}</td>"?</p> 
+    <form method="POST" >
+        <button type="submit">Excluir</button>
+    </form>
+
+    <!-- Botão de retorno para outra página -->
+    <a href="{{ url_for('listarTamanho') }}">Cancelar</a>
+</div>
+
+{% endblock %}

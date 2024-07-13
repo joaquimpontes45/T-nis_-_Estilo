@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Cadastrar Categoria</title>
+</head>
+<body>
+    {% extends 'admin/base.html'%}
+
+{% block content %}
+
+    <style>
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #nome_produto{
+            width: 300px;
+        }
+        #descricao{
+            width: 300px;
+        }
+        #tipo{
+            width: 300px;
+        }
+        #preco{
+            width: 300px;
+        }
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+          <h1 class="flash-message" style="display: flex;justify-content: center;">{{ message }}
+            <button class="close" onclick="this.parentElement.style.display='none';">&times;</button></h1>
+        {% endfor %}
+    {% endif%}
+    {% endwith %}
+    <h1>Cadastrar Produto</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="nome_produto">Nome do Produto:</label>
+        <input type="text" id="nome_produto" name="nome_produto" required>
+        <br>
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required>
+        <br>
+        <!--<label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required>será alterado-->
+        <br>
+        <label for="preco">preço:</label>
+        <input type="number" id="preco" name="preco" required>
+        <br>
+        <label for="imagem">Imagem:</label>
+        <input type="file" id="imagem" name="imagem" required>
+        <br>
+        <label for="imagem1">Imagem1:</label>
+        <input type="file" id="imagem1" name="imagem1" required>
+        <br>
+        <label for="imagem2">Imagem2:</label>
+        <input type="file" id="imagem2" name="imagem2" required>
+        <br>
+
+        <select  required name="id_categoria" required>
+            {% for categoria in categorias %}   
+                <option value="{{categoria['id'] }}">
+                        {{ categoria['nome'] }}
+                </option>
+            {% endfor %} 
+        </select>
+
+        <label for="sizes">Sizes:</label><br>
+        <div style="display: flex; flex-wrap: wrap;">
+            {% for tamanho in tamanhos %}
+                <div style="display: inline-block; margin-right: 30px;" >
+                    <input type="checkbox" name="tamanho" value="{{ tamanho.id }}"> {{ tamanho['tamanho'] }}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+
+
+
+        <br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+{%endblock%}
+</body>
+</html>

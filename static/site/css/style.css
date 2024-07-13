@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+  font-family:sans-serif;
+    text-decoration:none;
+}
+body{
+    background-color: /*rgb(55, 95, 95)*/#1d2631;
+}
+.header{
+    background-color: #808080;
+    border-radius: 0px;
+    margin-top: -5px; /*espaço com o anuncioInicial*/
+}
+.nav{
+    max-width: 1280px;
+    width: 100%;
+    height: 70px;
+    margin-inline:auto;
+    display:flex;
+    justify-content: end;    
+}
+
+.logo{
+    font-size:48px;
+    white-space: nowrap;
+    color: white;
+    font-family: "Workbench", sans-serif;/*google fonts*/
+}
+
+
+.logo:hover{
+  color: #b8b7b7;
+}
+
+.header .logo{
+  position: absolute;
+  display: flex;
+}
+
+.nav a{
+    color: white;
+}
+
+.nav a:hover{
+    /*text-shadow: 0px 0px 12px white;*/
+    color: #b8b7b7;
+}
+
+
+.nav-list{
+    display:flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-list a{
+    font-size: 20px;
+    color:#fff;
+    padding-block: 18px;
+}
+
+.sobre:hover{
+    transform: translateY(-5px);
+}
+.projeto:hover{
+    transform: translateY(-5px);
+}
+.contato:hover{
+    transform: translateY(-5px);
+}
+
+/*anuncios*/
+.anuncioInicial{
+    background-color: #808080;
+}
+.anuncioAndroid{
+  display: none;
+}
+
+.banner {
+  margin-top: 0px;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner .slides {
+  display: flex;
+  transition: transform 1s ease-in-out;}
+/* Fim do anuncio*/
+
+
+/*Inico da largura da tela */
+@media(max-width: 600px){
+  .nav-list{
+    max-width: 100px;
+    height: 70px;
+    margin-inline: auto;
+    display:flex;
+    justify-content:end;
+    align-items: end;
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
+  .logo{
+    display:flex;
+    align-items: center;
+  }
+  .nav{
+    display:flex;
+    justify-content: start;
+  }
+  .nav-list{
+    display: flex;
+    justify-content: end;
+  }
+
+
+  .anuncioInicial{
+    display: none;
+  }
+
+  .anuncioAndroid{
+    display: flex;
+    background-color: #808080;
+  }
+
+  .header{
+    margin-top: 0px;
+  }
+  /* espaço para os cards*/
+  .banner {
+    margin-top: 0px;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }/* fim dos espaços*/
+}/*Fim da largura da tela*/

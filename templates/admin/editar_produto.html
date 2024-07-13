@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar categorias</title>
+</head>
+<body>
+{% extends 'admin/base.html' %}
+{% block content %}
+<style>
+    .editar{
+        display: flex;
+        margin-left: 50vh;
+        width: 50%;
+    }
+    .ibagens{
+        display: flex;
+        justify-content: center;
+    }
+    .ibagens_edit{
+        display: flex;
+        justify-content: center;
+    }
+</style>
+    <h1 style="display: flex;justify-content: center;">Editar Produto</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="editar">
+            <label for="nome_produto" style="display: block;">Nome do Produto:</label>
+            <input type="text" id="nome_produto" name="nome_produto" value="{{produto['nome']}}" required>
+            <br>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" value="{{produto['descricao']}}" required>
+            <label for="preco" style="display: block;">preço:</label>
+            <input type="text" id="preco" name="preco" value="{{produto['preco']}}" required>
+        </div>
+        <br>
+        <!--<label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" value="{{produto['tipo']}}" required>-->
+        <br>
+        
+        <br>
+        <div class="ibagens">
+            <label for="imagem_atual">Imagem Atual:</label>
+            <img src="data:image/jpeg;base64,{{produto['img']}}" alt="imagem Atual" style="width: 200px;">
+            <label for="imagem_atual">Imagem 2:</label>
+            <img src="data:image/jpeg;base64,{{produto['imag']}}" alt="imagem Atual" style="width: 200px;">
+
+            <label for="imagem_atual">Imagem 3:</label>
+            <img src="data:image/jpeg;base64,{{produto['image']}}" alt="imagem Atual" style="width: 200px;">
+        </div>
+        <div class="ibagens_edit">
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem">
+
+            <label for="imagem">Imagem1:</label>
+            <input type="file" id="imagem1" name="imagem1">
+
+            <label for="imagem">Imagem2:</label>
+            <input type="file" id="imagem1" name="imagem2">
+        </div>
+        <br>
+        <select name="id_categoria" style="display: flex;justify-content: center;">
+            {% for categoria in categorias %}   
+                <option value="{{ categoria['id'] }}" {%if categoria['id'] == produto['id_categoria'] %}selected
+                                                        {%endif%} >
+                        {{ categoria['nome'] }}
+                </option>
+            {% endfor %} 
+        </select>
+        <br>
+
+        <label for="tamanho">Tamanho de Tenis:</label>
+        <div style="display: flex; flex-wrap: wrap;">
+            {% for tamanho in todos_os_tamanhos %}
+                <div style="display: inline-block; margin-right: 30px;margin-left: 100px;" >
+                    <input type="checkbox" name="tamanho" value="{{ tamanho['id'] }}" {% if tamanho['id'] in tamanhos_associados_ids %}checked{% endif %}>{{ tamanho['tamanho'] }}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" >Cadastrar</button>
+        <a href="{{ url_for('listarProduto') }}" style="display: flex;justify-content: center;">Cancelar</a>
+
+    </form>
+{% endblock %}
+</body>
+</html>
