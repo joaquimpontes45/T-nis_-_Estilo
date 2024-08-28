@@ -208,7 +208,7 @@ def cadastrar_produto():
         imagem2= request.files.get('imagem2')
         cat_id=request.form.get('id_categoria')
         tamanho_selecionado = request.form.getlist('tamanho')
-        print(tamanho)
+
         
 
         existe_produto = conn.execute('SELECT * FROM produtos WHERE nome = ?', (nome_produto,)).fetchone()
@@ -449,7 +449,7 @@ def ExcluirIDcategoria():
 def cadastro_slides():
     if request.method == "POST":
         slide =request.files.get('slide')
-        print(slide)
+
         if slide:
             imagem_base64 = base64.b64encode(slide.read()).decode('UTF-8')
             conn = get_db_conection()
@@ -534,7 +534,7 @@ def editarSlide(id):
     return render_template('admin/editar_slide.html', slides=slides)
 
 
-# status do banco de dados botão pro admin
+# status do banco de dados botão pro adm
 @app.route('/ligar_slide/<int:id>')
 def ligar_slide(id):
     conn = get_db_conection()
@@ -629,7 +629,7 @@ def ExcluirIDtamanho():
     tamanhos = conn.execute('SELECT * FROM tamanhos').fetchall()
     if request.method =='POST':
         id = request.form.get('id')
-        print(id)
+
         
         existe_tamanhos = conn.execute('SELECT * FROM tamanhos WHERE id = ?', (id,)).fetchone()
         if not existe_tamanhos:
