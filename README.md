@@ -1,5 +1,1 @@
-Projeto de uma loja de tenis com foco no back-end
-
-
-
-ponto de observação:há um erro em 'print(id)' so remover e rodar o codigo de novo
+Projeto de uma loja de tenis com foco no back-end feito em python,flask,html,css,javaScript e sqlite
